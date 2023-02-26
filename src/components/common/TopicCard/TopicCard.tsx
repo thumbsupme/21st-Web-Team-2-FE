@@ -57,7 +57,7 @@ const TopicCard = (props: TopicCardProps, ref: React.ForwardedRef<HTMLDivElement
     const result = await checkAuth(() => vote({ topicId, voteOptionId }));
     if (!result || !loginMember) return;
 
-    const currentCategory = JOB_CATEGORIES[loginMember.jobCategory].key || JOB_CATEGORIES.ETC.key;
+    const currentCategory = (JOB_CATEGORIES[loginMember.jobCategory] || JOB_CATEGORIES.ETC).key;
 
     const changed = options.map((option) => {
       if (option.voteOptionId === selectedOptionId) {
